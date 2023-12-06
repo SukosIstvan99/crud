@@ -1,0 +1,49 @@
+<p-table [value]="portfolio" [paginator]="true" [rows]="10" >
+  <ng-template pTemplate="caption">
+      <div class="flex align-items-center justify-content-between">
+          <h1 style="color: white;">Portfolio </h1>
+          <p-button label="Add Portfolio" icon="pi pi-user-plus"  (onClick)="showAddModel()"></p-button>
+
+
+
+      </div>
+  </ng-template>
+
+  <ng-template pTemplate="header">
+      <tr>
+          <th>Project Name</th>
+          <th>Language</th>
+          <th>Description</th>
+          <th>Image</th>
+          <th>Website</th>
+          <th>Edit</th>
+
+      </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-portfolio>
+      <tr>
+          <td>{{ portfolio.projectname }}</td>
+          <td>{{ portfolio.language }}</td>
+          <td>{{ portfolio.description }}</td>
+          <td><img src="{{ portfolio.image }}" width="100px" /></td>
+          <td>
+            <p-button class="button-link" icon="pi pi-github" [rounded]="true" severity="info" (onClick)="navigateToWebsite(portfolio.website)"></p-button>
+          </td>
+          <td>
+
+            <p-button class="buttonedit" icon="pi pi-pencil"  [rounded]="true" severity="help" (onClick)="editPortfolio(portfolio)"></p-button>
+
+            <p-button  icon="pi pi-trash" [rounded]="true" severity="danger" (onClick)="deletePortfolio(portfolio.id)"></p-button>
+
+          </td>
+      </tr>
+  </ng-template>
+</p-table>
+
+
+<app-add-edit-portfolio
+  [displayAddModel]="displayAddModel"
+  [selectedPortfolio]="selectedPortofolio"
+  (clickClose)="hideAddModel()"
+></app-add-edit-portfolio>

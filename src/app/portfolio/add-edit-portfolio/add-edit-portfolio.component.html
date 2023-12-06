@@ -1,0 +1,42 @@
+<p-dialog
+ header="{{modelType}} Portfolio"
+ [(visible)]="displayAddModel"
+  [style]="{width: '50vw'}"
+  [draggable]="false"
+  [resizable]="false"
+  (onHide)="closeModel()"
+>
+  <form [formGroup]="portfolioForm">
+    <div class="p-inputgroup">
+      <input id="projectname" pInputText class="p-inputtext-lg" formControlName="projectname" placeholder="Project Name" required>
+    </div>
+
+    <div class="p-inputgroup">
+      <input id="language" pInputText class="p-inputtext-lg" formControlName="language" placeholder="Language" required>
+    </div>
+
+    <div class="p-inputgroup">
+      <textarea id="description" pInputTextarea class="p-inputtext-lg" formControlName="description" placeholder="Description"></textarea>
+    </div>
+
+    <div class="p-inputgroup">
+      <input id="website" pInputText class="p-inputtext-lg" formControlName="website" placeholder="www.github.com" required>
+    </div>
+
+    <div class="p-inputgroup">
+      <input id="image" pInputText class="p-inputtext-lg" formControlName="image" placeholder="Image URL" required>
+    </div>
+  </form>
+
+  <ng-template pTemplate="footer">
+    <p-button
+      (click)="closeModel()"
+      label="Cancel"
+      styleClass="p-button-text"
+    ></p-button>
+    <p-button
+      (click)="addPortfolio()"
+      label="{{modelType}}"
+    ></p-button>
+  </ng-template>
+</p-dialog>
