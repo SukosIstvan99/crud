@@ -10,8 +10,9 @@ export class PortfolioComponent implements OnInit {
   displayAddModel: boolean = false;
   selectedPortofolio: any = null ;
   portfolio: any[] = [];
+  layout:any[] = [];
 
-  currentItem:any ; 
+  currentItem:any ;
   constructor(private service: SharedService) {}
 
   ngOnInit() {

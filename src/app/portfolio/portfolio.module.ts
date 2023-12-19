@@ -8,6 +8,7 @@ import { PaginatorModule } from 'primeng/paginator';
 import { DialogModule } from 'primeng/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddEditPortfolioModule } from './add-edit-portfolio/add-edit-portfolio.module';
+import { DataViewModule } from 'primeng/dataview';
 
 
 
@@ -23,6 +24,7 @@ import { AddEditPortfolioModule } from './add-edit-portfolio/add-edit-portfolio.
     PaginatorModule,
     AddEditPortfolioModule,
     BrowserAnimationsModule,
+    DataViewModule,
   ],
   exports:[
     PortfolioComponent

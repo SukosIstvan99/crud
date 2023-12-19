@@ -14,9 +14,9 @@ export class AddEditPortfolioComponent implements OnInit, OnChanges {
   @Output() clickClose: EventEmitter<any> = new EventEmitter();
   modelType = "Add" ;
 
-  selectedFile: File | null = null;
-  previewUrl: any = null;
 
+  previewUrl: any = null;
+  selectedImage: File | null = null;
 
 
   portfolioForm: FormGroup;
@@ -87,4 +87,6 @@ export class AddEditPortfolioComponent implements OnInit, OnChanges {
       }
     }
   }
+
+  
 }
