@@ -7,88 +7,40 @@
 
 
       </div>
-<div>
-<p-dataView #dv [value]="portfolio" >
+  </ng-template>
+
   <ng-template pTemplate="header">
-      <div class="flex justify-content-end">
-          <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
-      </div>
-  </ng-template>
-  <ng-template let-portfolio pTemplate="list" let-portfolios>
-      <div class="grid grid-nogutter">
-          <div class="col-12" *ngFor="let portfolio of portfolios; let first = first">
-              <div class="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4" [ngClass]="{ 'border-top-1 surface-border': !first }">
-                <img class="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round" [src]="portfolio.image" [alt]="portfolio.projectname" />
-                  <div class="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
-                      <div class="flex flex-column align-items-center sm:align-items-start gap-3">
-                          <div class="text-2xl font-bold text-900">{{ portfolio.description }}</div>
+      <tr>
+          <th>Project Name</th>
+          <th>Language</th>
+          <th>Description</th>
+          <th>Image</th>
+          <th>Website</th>
+          <th>Edit</th>
 
-                          <div class="flex align-items-center gap-3">
-                              <span class="flex align-items-center gap-2">
-                                  <i>{{ portfolio.language }}</i>
-                                  <span class="font-semibold">{{ portfolio.category }}</span>
-                              </span>
-
-                          </div>
-                      </div>
-                      <div class="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">
-
-                        <td>
-                          <p-button class="p-button-rounded" icon="pi pi-github"  severity="info" (onClick)="navigateToWebsite(portfolio.website)"></p-button>
-</td>
-<td>
-                          <p-button class="p-button-rounded" icon="pi pi-pencil"   severity="help" (onClick)="editPortfolio(portfolio)"></p-button>
-</td>
-<td>
-                          <p-button  class="p-button-rounded" icon="pi pi-trash"  severity="danger" (onClick)="deletePortfolio(portfolio.id)"></p-button>
-
-                        </td>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
+      </tr>
   </ng-template>
 
-  <ng-template let-portfolio pTemplate="grid" let-portfolios>
-    <div class="grid grid-nogutter">
-        <div class="col-12 sm:col-6 lg:col-12 xl:col-4 p-2" *ngFor="let portfolio of portfolios">
-            <div class="p-4 border-1 surface-border surface-card border-round">
-                <div class="flex flex-wrap align-items-center justify-content-between gap-2">
-                    <span class="flex align-items-center gap-2">
+  <ng-template pTemplate="body" let-portfolio>
+      <tr>
+          <td>{{ portfolio.projectname }}</td>
+          <td>{{ portfolio.language }}</td>
+          <td>{{ portfolio.description }}</td>
+          <td><img src="{{ portfolio.image }}" width="100px" /></td>
+          <td>
+            <p-button class="button-link" icon="pi pi-github" [rounded]="true" severity="info" (onClick)="navigateToWebsite(portfolio.website)"></p-button>
+          </td>
+          <td>
 
-                        <span class="font-semibold">{{ portfolio.projectname }}</span>
-                    </span>
-                </div>
-                <div class="flex flex-column align-items-center gap-3 py-5">
-                    <img class="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round" [src]=" portfolio.image" [alt]="portfolio.projectname" />
-                    <div class="text-2xl font-bold">{{ portfolio.language }}</div>
-                    <div style="text-align: center;">
-                    <i style="display: inline-block;">{{ portfolio.description }}</i>
-                  </div>
-                </div>
-                <div class="flex align-items-center justify-content-between">
+            <p-button class="buttonedit" icon="pi pi-pencil"  [rounded]="true" severity="help" (onClick)="editPortfolio(portfolio)"></p-button>
 
-                  <div class="flex sm:flex-row align-items-center sm:align-items-end gap-3 sm:gap-2">
+            <p-button  icon="pi pi-trash" [rounded]="true" severity="danger" (onClick)="deletePortfolio(portfolio.id)"></p-button>
 
+          </td>
+      </tr>
+  </ng-template>
+</p-table>
 
-                      <p-button class="p-button-rounded" icon="pi pi-github"  severity="info" (onClick)="navigateToWebsite(portfolio.website)"></p-button>
-
-
-                      <p-button class="p-button-rounded" icon="pi pi-pencil"  severity="help" (onClick)="editPortfolio(portfolio)"></p-button>
-
-
-                      <p-button class="p-button-rounded" icon="pi pi-trash"  severity="danger" (onClick)="deletePortfolio(portfolio.id)"></p-button>
-
-
-                  </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</ng-template>
-</p-dataView>
-</div>
 
 <app-add-edit-portfolio
   [displayAddModel]="displayAddModel"
